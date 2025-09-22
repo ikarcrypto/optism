@@ -120,6 +120,7 @@
             justify-content: center;
             transition: all 0.3s ease;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .social-icon:hover {
@@ -319,16 +320,16 @@
             <div class="social-icon">
                 <img src="pump.png" alt="Pump" width="32" height="32" style="border-radius: 6px;">
             </div>
-            <div class="social-icon">
+            <a href="https://x.com/i/communities/1970267206375162350" target="_blank" class="social-icon">
                 <img src="x.png" alt="X" width="32" height="32" style="border-radius: 6px;">
-            </div>
+            </a>
         </div>
 
         <a href="#" class="join-button" onclick="startGame()">Start Pumping!</a>
     </div>
 
     <!-- Game Elements -->
-    <div id="gameOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+    <div id="gameOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; align-items: center; justify-content: center; flex-direction: column;">
         <div style="text-align: center; color: white;">
             <h2 style="font-size: 3rem; margin-bottom: 1rem;">EVERYTHING IS PUMPING!!!</h2>
             <div id="portfolio" style="font-size: 2rem; margin-bottom: 2rem; color: #22c55e;">Portfolio: $1</div>
@@ -338,16 +339,6 @@
     </div>
 
     <div class="bottom-code">CA: COMING SOON</div>
-
-    <!-- Audio Elements -->
-    <audio id="backgroundMusic" loop>
-        <source src="pump-music.mp3" type="audio/mpeg">
-        <source src="pump-music.ogg" type="audio/ogg">
-    </audio>
-
-    <button id="musicToggle" style="position: fixed; bottom: 20px; right: 20px; background: rgba(255,255,255,0.2); border: 2px solid white; color: white; padding: 10px 15px; border-radius: 50px; cursor: pointer; font-family: 'Kalam', cursive; z-index: 1001; backdrop-filter: blur(10px);">
-        🎵 Music: OFF
-    </button>
 
     <script>
         // Add some interactive elements
@@ -404,63 +395,7 @@
             }
         `;
         document.head.appendChild(style);
-        // Music controls
-        let musicPlaying = false;
-        let userInteracted = false;
-        const backgroundMusic = document.getElementById('backgroundMusic');
-        const musicToggle = document.getElementById('musicToggle');
-        
-        // Track first user interaction
-        document.addEventListener('click', () => {
-            userInteracted = true;
-        }, { once: true });
-        
-        musicToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            if (musicPlaying) {
-                backgroundMusic.pause();
-                musicToggle.textContent = '🎵 Music: OFF';
-                musicPlaying = false;
-            } else {
-                if (backgroundMusic.src) {
-                    backgroundMusic.play()
-                        .then(() => {
-                            musicToggle.textContent = '🔊 Music: ON';
-                            musicPlaying = true;
-                        })
-                        .catch(e => {
-                            console.log('Audio play failed:', e);
-                            musicToggle.textContent = '🎵 No Audio File';
-                        });
-                } else {
-                    musicToggle.textContent = '🎵 No Audio File';
-                }
-            }
-        });
-
-        // Try to start music when game starts (only after user interaction)
-        function startGame() {
-            gameActive = true;
-            portfolio = 1;
-            clickCount = 0;
-            document.getElementById('gameOverlay').style.display = 'flex';
-            updatePortfolio();
-            
-            // Only try to start music if user has interacted and music file exists
-            if (userInteracted && !musicPlaying && backgroundMusic.src) {
-                backgroundMusic.play()
-                    .then(() => {
-                        musicToggle.textContent = '🔊 Music: ON';
-                        musicPlaying = true;
-                    })
-                    .catch(e => {
-                        console.log('Music not available or blocked');
-                    });
-            }
-            
-            // Make everything clickable
-            document.addEventListener('click', handleGameClick);
-        }
+        let gameActive = false;
         let portfolio = 1;
         let clickCount = 0;
         
