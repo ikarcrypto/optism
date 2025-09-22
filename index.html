@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this is it.</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Kalam', cursive;
+            background: linear-gradient(135deg, #62b4ff 0%, #4da3ff 50%, #3892ff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .corner-text {
+            position: absolute;
+            font-size: 2rem;
+            font-weight: 300;
+            opacity: 0.8;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .corner-text.top-left {
+            top: 8%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+
+        .corner-text.top-right {
+            top: 8%;
+            right: 8%;
+            animation-delay: 1s;
+        }
+
+        .corner-text.bottom-left {
+            bottom: 15%;
+            left: 8%;
+            animation-delay: 2s;
+        }
+
+        .corner-text.bottom-right {
+            bottom: 15%;
+            right: 8%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .logo {
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+        }
+
+        .main-content {
+            text-align: center;
+            z-index: 10;
+        }
+
+        .main-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            margin-bottom: 2rem;
+            animation: bounce 2s ease-in-out infinite;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .join-button {
+            background: transparent;
+            color: white;
+            border: 3px solid white;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-family: 'Kalam', cursive;
+            font-weight: 400;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            animation: wiggle 3s ease-in-out infinite;
+        }
+
+        .join-button:hover {
+            background: white;
+            color: #6366f1;
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.3);
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(1deg); }
+            75% { transform: rotate(-1deg); }
+        }
+
+        .bottom-code {
+            position: absolute;
+            bottom: 3%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            opacity: 0.6;
+            letter-spacing: 0.1em;
+            font-family: 'Courier New', monospace;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: floatShapes 20s infinite linear;
+        }
+
+        .shape:nth-child(1) {
+            left: 10%;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            left: 20%;
+            width: 15px;
+            height: 15px;
+            background: white;
+            transform: rotate(45deg);
+            animation-delay: 5s;
+        }
+
+        .shape:nth-child(3) {
+            left: 30%;
+            width: 25px;
+            height: 25px;
+            background: white;
+            border-radius: 50%;
+            animation-delay: 10s;
+        }
+
+        .shape:nth-child(4) {
+            left: 50%;
+            width: 18px;
+            height: 18px;
+            background: white;
+            transform: rotate(45deg);
+            animation-delay: 15s;
+        }
+
+        .shape:nth-child(5) {
+            left: 70%;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            animation-delay: 3s;
+        }
+
+        .shape:nth-child(6) {
+            left: 80%;
+            width: 16px;
+            height: 16px;
+            background: white;
+            transform: rotate(45deg);
+            animation-delay: 8s;
+        }
+
+        @keyframes floatShapes {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.1; }
+            90% { opacity: 0.1; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .corner-text {
+                font-size: 1.5rem;
+            }
+
+            .corner-text.top-left,
+            .corner-text.top-right {
+                top: 12%;
+            }
+
+            .corner-text.bottom-left,
+            .corner-text.bottom-right {
+                bottom: 20%;
+            }
+
+            .corner-text.top-left,
+            .corner-text.bottom-left {
+                left: 5%;
+            }
+
+            .corner-text.top-right,
+            .corner-text.bottom-right {
+                right: 5%;
+            }
+
+            .logo {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .social-icons {
+                gap: 1rem;
+            }
+
+            .social-icon {
+                width: 35px;
+                height: 35px;
+            }
+
+            .join-button {
+                padding: 0.8rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="logo">
+        <img src="optimism.png" alt="Optimism Logo">
+    </div>
+
+    <div class="corner-text top-left">moon bound</div>
+    <div class="corner-text top-right">diamond hands</div>
+    <div class="corner-text bottom-left">hodl strong</div>
+    <div class="corner-text bottom-right">to the stars</div>
+
+    <div class="main-content">
+        <h1 class="main-title">Optimism</h1>
+        
+        <div class="social-icons">
+            <div class="social-icon">
+                <img src="dex.png" alt="DEX" width="32" height="32" style="border-radius: 6px;">
+            </div>
+            <div class="social-icon">
+                <img src="pump.png" alt="Pump" width="32" height="32" style="border-radius: 6px;">
+            </div>
+            <div class="social-icon">
+                <img src="x.png" alt="X" width="32" height="32" style="border-radius: 6px;">
+            </div>
+        </div>
+
+        <a href="#" class="join-button" onclick="startGame()">Start Pumping!</a>
+    </div>
+
+    <!-- Game Elements -->
+    <div id="gameOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+        <div style="text-align: center; color: white;">
+            <h2 style="font-size: 3rem; margin-bottom: 1rem;">EVERYTHING IS PUMPING!!!</h2>
+            <div id="portfolio" style="font-size: 2rem; margin-bottom: 2rem; color: #22c55e;">Portfolio: $1</div>
+            <div id="clickMessage" style="font-size: 1.5rem; margin-bottom: 2rem; min-height: 2em; color: #ffd700;"></div>
+            <button onclick="closeGame()" style="padding: 1rem 2rem; font-size: 1.2rem; background: #ff4444; color: white; border: none; border-radius: 25px; cursor: pointer; font-family: 'Kalam', cursive;">Close Game</button>
+        </div>
+    </div>
+
+    <div class="bottom-code">CA: COMING SOON</div>
+
+    <!-- Audio Elements -->
+    <audio id="backgroundMusic" loop>
+        <source src="pump-music.mp3" type="audio/mpeg">
+        <source src="pump-music.ogg" type="audio/ogg">
+    </audio>
+
+    <button id="musicToggle" style="position: fixed; bottom: 20px; right: 20px; background: rgba(255,255,255,0.2); border: 2px solid white; color: white; padding: 10px 15px; border-radius: 50px; cursor: pointer; font-family: 'Kalam', cursive; z-index: 1001; backdrop-filter: blur(10px);">
+        🎵 Music: OFF
+    </button>
+
+    <script>
+        // Add some interactive elements
+        document.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.shape');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            shapes.forEach((shape, i) => {
+                const speed = (i + 1) * 0.5;
+                const xMove = (x - 0.5) * speed;
+                const yMove = (y - 0.5) * speed;
+                
+                shape.style.transform += ` translate(${xMove}px, ${yMove}px)`;
+            });
+        });
+
+        // Add click effects to social icons
+        document.querySelectorAll('.social-icon').forEach(icon => {
+            icon.addEventListener('click', (e) => {
+                e.target.closest('.social-icon').style.animation = 'none';
+                setTimeout(() => {
+                    e.target.closest('.social-icon').style.animation = '';
+                }, 100);
+            });
+        });
+
+        // Add some rocket animations
+        const rockets = ['🚀', '💎', '📈', '🌙'];
+        
+        setInterval(() => {
+            const rocket = document.createElement('div');
+            rocket.innerHTML = rockets[Math.floor(Math.random() * rockets.length)];
+            rocket.style.position = 'fixed';
+            rocket.style.left = Math.random() * 100 + 'vw';
+            rocket.style.bottom = '0px';
+            rocket.style.fontSize = '2rem';
+            rocket.style.pointerEvents = 'none';
+            rocket.style.zIndex = '1000';
+            rocket.style.animation = 'rocketFly 3s linear forwards';
+            document.body.appendChild(rocket);
+            
+            setTimeout(() => {
+                rocket.remove();
+            }, 3000);
+        }, 2000);
+
+        // Add rocket animation keyframes
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rocketFly {
+                0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+                100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+        // Music controls
+        let musicPlaying = false;
+        let userInteracted = false;
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        
+        // Track first user interaction
+        document.addEventListener('click', () => {
+            userInteracted = true;
+        }, { once: true });
+        
+        musicToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (musicPlaying) {
+                backgroundMusic.pause();
+                musicToggle.textContent = '🎵 Music: OFF';
+                musicPlaying = false;
+            } else {
+                if (backgroundMusic.src) {
+                    backgroundMusic.play()
+                        .then(() => {
+                            musicToggle.textContent = '🔊 Music: ON';
+                            musicPlaying = true;
+                        })
+                        .catch(e => {
+                            console.log('Audio play failed:', e);
+                            musicToggle.textContent = '🎵 No Audio File';
+                        });
+                } else {
+                    musicToggle.textContent = '🎵 No Audio File';
+                }
+            }
+        });
+
+        // Try to start music when game starts (only after user interaction)
+        function startGame() {
+            gameActive = true;
+            portfolio = 1;
+            clickCount = 0;
+            document.getElementById('gameOverlay').style.display = 'flex';
+            updatePortfolio();
+            
+            // Only try to start music if user has interacted and music file exists
+            if (userInteracted && !musicPlaying && backgroundMusic.src) {
+                backgroundMusic.play()
+                    .then(() => {
+                        musicToggle.textContent = '🔊 Music: ON';
+                        musicPlaying = true;
+                    })
+                    .catch(e => {
+                        console.log('Music not available or blocked');
+                    });
+            }
+            
+            // Make everything clickable
+            document.addEventListener('click', handleGameClick);
+        }
+        let portfolio = 1;
+        let clickCount = 0;
+        
+        const pumpMessages = [
+            "BEST INVESTMENT EVER!", "YOU'RE A GENIUS!", "MOON CONFIRMED!",
+            "DIAMOND HANDS!", "TO THE STARS!", "GENERATIONAL WEALTH!",
+            "WE'RE EARLY!", "100X INCOMING!", "THIS IS IT!", "WAGMI FRENS!",
+            "NEVER SELLING!", "HODL STRONG!", "ROCKET FUEL!", "BULLISH AF!",
+            "NUMBER GO UP!", "INFINITE MONEY GLITCH!", "YOU CAN'T LOSE!",
+            "BEST TRADE EVER!", "FINANCIAL FREEDOM!", "RETIREMENT MONEY!"
+        ];
+
+        const multipliers = [1000, 10000, 100000, 1000000, 10000000];
+
+        function startGame() {
+            gameActive = true;
+            portfolio = 1;
+            clickCount = 0;
+            document.getElementById('gameOverlay').style.display = 'flex';
+            updatePortfolio();
+            
+            // Make everything clickable
+            document.addEventListener('click', handleGameClick);
+        }
+
+        function closeGame() {
+            gameActive = false;
+            document.getElementById('gameOverlay').style.display = 'none';
+            document.removeEventListener('click', handleGameClick);
+        }
+
+        function handleGameClick(e) {
+            if (!gameActive) return;
+            
+            e.preventDefault();
+            e.stopPropagation();
+            
+            clickCount++;
+            const multiplier = multipliers[Math.min(clickCount - 1, multipliers.length - 1)];
+            portfolio *= multiplier;
+            
+            // Show pump message
+            const message = pumpMessages[Math.floor(Math.random() * pumpMessages.length)];
+            document.getElementById('clickMessage').textContent = `${message} +${multiplier}%!`;
+            
+            // Create confetti effect at click position
+            createConfetti(e.clientX, e.clientY);
+            
+            // Update portfolio display
+            updatePortfolio();
+        }
+
+        function updatePortfolio() {
+            const portfolioEl = document.getElementById('portfolio');
+            let displayValue;
+            
+            if (portfolio >= 1e12) {
+                displayValue = `${(portfolio / 1e12).toFixed(1)}T`;
+            } else if (portfolio >= 1e9) {
+                displayValue = `${(portfolio / 1e9).toFixed(1)}B`;
+            } else if (portfolio >= 1e6) {
+                displayValue = `${(portfolio / 1e6).toFixed(1)}M`;
+            } else if (portfolio >= 1e3) {
+                displayValue = `${(portfolio / 1e3).toFixed(1)}K`;
+            } else {
+                displayValue = `${portfolio}`;
+            }
+            
+            portfolioEl.textContent = `Portfolio: ${displayValue}`;
+            
+            // Add pulsing effect
+            portfolioEl.style.animation = 'none';
+            setTimeout(() => {
+                portfolioEl.style.animation = 'pulse 0.5s ease-in-out';
+            }, 10);
+        }
+
+        function createConfetti(x, y) {
+            const confettiCount = 10;
+            const colors = ['#22c55e', '#ffd700', '#ff4444', '#3b82f6', '#8b5cf6'];
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.left = x + 'px';
+                confetti.style.top = y + 'px';
+                confetti.style.width = '10px';
+                confetti.style.height = '10px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = '50%';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.zIndex = '10001';
+                
+                const angle = (Math.PI * 2 * i) / confettiCount;
+                const velocity = 100 + Math.random() * 50;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+                
+                confetti.style.animation = `confettiFly 1s ease-out forwards`;
+                confetti.style.setProperty('--vx', vx + 'px');
+                confetti.style.setProperty('--vy', vy + 'px');
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 1000);
+            }
+        }
+
+        // Add confetti animation
+        const confettiStyle = document.createElement('style');
+        confettiStyle.textContent = `
+            @keyframes confettiFly {
+                0% { transform: translate(0, 0) scale(1); opacity: 1; }
+                100% { transform: translate(var(--vx), var(--vy)) scale(0); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(confettiStyle);
+    </script>
+</body>
+</html>
